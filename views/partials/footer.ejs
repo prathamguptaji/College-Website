@@ -1,0 +1,163 @@
+<!-- Footer -->
+
+<footer class="bg-brand-cream border-t border-brand-navy/5 pt-24 pb-12">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+            <div class="space-y-8">
+                <div class="flex items-center space-x-3">
+                    <img src="./logo.png" alt="MITS Logo" class="w-8 h-8" onerror="this.src='image_logo_fallback'">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold tracking-tighter text-brand-navy leading-none">MITS</span>
+                        <span class="text-[9px] font-black tracking-[0.3em] text-brand-gold uppercase">Gwalior</span>
+                    </div>
+                </div>
+                <p class="text-sm text-brand-navy/50 leading-relaxed">
+                    Madhav Institute of Technology and Science, Gwalior (M.P.), India - 474005. <br/>
+                    A leading technical institution since 1957.
+                </p>
+                <div class="flex space-x-5">
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-brand-navy mb-8 uppercase tracking-widest text-[10px]">Information</h5>
+                <ul class="space-y-4 text-sm font-medium text-brand-navy/60">
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">RTI</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">T&P Cell</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">NIRF</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">Autonomous Cell</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-brand-navy mb-8 uppercase tracking-widest text-[10px]">Campus</h5>
+                <ul class="space-y-4 text-sm font-medium text-brand-navy/60">
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">Central Library</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">Hostels</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">Sports Facilities</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition-colors">Medical Center</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-brand-navy/5 text-center">
+                <p class="text-[9px] font-black uppercase tracking-[0.2em] text-brand-gold mb-2">Locate Us</p>
+                <p class="text-[11px] text-brand-navy/60 mb-6 italic">Gwalior, Madhya Pradesh, India.</p>
+                <button class="w-full bg-brand-navy text-white py-3.5 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-navy transition-all">
+                    Google Maps
+                </button>
+            </div>
+        </div>
+
+        <div class="pt-12 border-t border-brand-navy/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] font-black uppercase tracking-[0.3em] text-brand-navy/40">
+            <p>© 2024 Madhav Institute of Technology and Science (MITS). All rights reserved.</p>
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-brand-navy transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Sitemap</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed bottom-10 right-10 z-[100] translate-y-32 opacity-0 transition-all duration-700">
+    <div class="bg-brand-navy text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 border border-brand-gold/30">
+        <div class="w-8 h-8 bg-brand-gold/20 text-brand-gold rounded-full flex items-center justify-center">
+            <i data-lucide="check" class="w-4 h-4"></i>
+        </div>
+        <span class="text-xs font-black uppercase tracking-widest" id="toast-message">Success!</span>
+    </div>
+</div>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Navbar Interaction
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.remove('mt-8');
+            navbar.querySelector('.bg-white\\/90').classList.remove('rounded-2xl');
+            navbar.querySelector('.bg-white\\/90').classList.add('rounded-none', 'py-3', 'shadow-2xl');
+        } else {
+            navbar.classList.add('mt-8');
+            navbar.querySelector('.bg-white\\/90').classList.add('rounded-2xl');
+            navbar.querySelector('.bg-white\\/90').classList.remove('rounded-none', 'py-3', 'shadow-2xl');
+        }
+    });
+
+    // Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    menuToggle.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        menuIcon.setAttribute('data-lucide', isHidden ? 'menu' : 'x');
+        lucide.createIcons();
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Form & Toast
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+
+    function showToast(msg) {
+        toastMsg.innerText = msg;
+        toast.classList.remove('translate-y-32', 'opacity-0');
+        setTimeout(() => {
+            toast.classList.add('translate-y-32', 'opacity-0');
+        }, 3500);
+    }
+
+    const newsForm = document.getElementById('newsletter-form');
+    if(newsForm) {
+        newsForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Inquiry Submitted Successfully');
+            e.target.reset();
+        });
+    }
+
+    // Smooth Section Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if(href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics & Departments | MITS Gwalior</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0A192F',
+                            slate: '#112240',
+                            gold: '#C5A059',
+                            'gold-light': '#D4AF37',
+                            cream: '#F8F5F0',
+                            crimson: '#B22222',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dept-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(10, 25, 47, 0.15);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-navy bg-white selection:bg-brand-gold/30 overflow-x-hidden">
+
+    <!-- Announcement Bar -->
+    <div class="bg-brand-navy text-white py-2 px-6 overflow-hidden border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em]">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center"><i data-lucide="award" class="w-3 h-3 mr-2 text-brand-gold"></i> NAAC A++ Accredited Autonomous Institute</span>
+                <span class="hidden lg:flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-2 text-brand-gold"></i> Gwalior, Madhya Pradesh</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="hover:text-brand-gold transition-colors">Home</a>
+                <a href="#" class="hover:text-brand-gold transition-colors">Student Portal</a>
+                <a href="#" class="bg-brand-gold px-3 py-1 text-brand-navy rounded-sm hover:bg-white transition-all">Support MITS</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 mt-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl shadow-navy/5 border border-white/20 px-8 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <img src="./logo.png" alt="MITS Logo" class="w-12 h-12 transition-transform group-hover:scale-110" onerror="this.src='image_logo_fallback'">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold tracking-tighter text-brand-navy leading-none">MITS</span>
+                        <span class="text-[9px] font-black tracking-[0.3em] text-brand-gold uppercase">Gwalior</span>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#schemes" class="text-sm font-bold text-brand-navy/70 hover:text-brand-navy transition-colors">Academic Schemes</a>
+                    <a href="#departments" class="text-sm font-bold text-brand-navy/70 hover:text-brand-navy transition-colors">Departments</a>
+                    <a href="#" class="text-sm font-bold text-brand-navy/70 hover:text-brand-navy transition-colors">Curriculum</a>
+                    <div class="w-px h-5 bg-brand-navy/10"></div>
+                    <button class="bg-brand-navy text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-slate transition-all shadow-lg active:scale-95">
+                        Apply Now
+                    </button>
+                </div>
+
+                <button id="menu-toggle" class="lg:hidden p-2 text-brand-navy">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="pt-56 pb-24 bg-brand-cream relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-gold/5 -z-10 skew-x-12"></div>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="text-brand-gold font-black uppercase tracking-[0.4em] text-[11px] mb-6 block">Academic Excellence at MITS</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-navy mb-8 leading-tight">
+                Architecting the <span class="italic font-light">Future Engineer.</span>
+            </h1>
+            <p class="text-xl text-brand-navy/60 max-w-2xl mx-auto font-medium">
+                Our pedagogical framework combines rigorous engineering fundamentals with industry-aligned research application across our specialized departments.
+            </p>
+        </div>
+    </section>
+
+    <!-- Academics / Schemes Section -->
+    <section id="schemes" class="py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 space-y-12">
+                    <div class="space-y-4">
+                        <h2 class="text-4xl font-serif font-bold text-brand-navy">Innovative Learning <span class="text-brand-gold">Schemes</span></h2>
+                        <p class="text-brand-navy/60 leading-relaxed font-medium">MITS Gwalior offers specialized academic pathways designed to foster technical proficiency and professional leadership.</p>
+                    </div>
+
+                    <div class="grid gap-8">
+                        <!-- Digital Learning -->
+                        <div class="flex gap-6 p-8 rounded-3xl bg-brand-cream border border-brand-navy/5 group hover:bg-white hover:shadow-2xl transition-all">
+                            <div class="w-14 h-14 bg-brand-navy text-brand-gold rounded-2xl flex items-center justify-center shrink-0">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">NPTEL & SWAYAM Integration</h4>
+                                <p class="text-sm text-brand-navy/50">Enhanced learning through premier digital certifications integrated into the credit-based autonomous curriculum.</p>
+                            </div>
+                        </div>
+
+                        <!-- Merit Scholarship -->
+                        <div class="flex gap-6 p-8 rounded-3xl bg-brand-cream border border-brand-navy/5 group hover:bg-white hover:shadow-2xl transition-all">
+                            <div class="w-14 h-14 bg-brand-gold text-brand-navy rounded-2xl flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Chancellor's Scholarship Scheme</h4>
+                                <p class="text-sm text-brand-navy/50">Financial support and academic stipends for meritorious students demonstrating exceptional technical potential.</p>
+                            </div>
+                        </div>
+
+                        <!-- Industry Track -->
+                        <div class="flex gap-6 p-8 rounded-3xl bg-brand-cream border border-brand-navy/5 group hover:bg-white hover:shadow-2xl transition-all">
+                            <div class="w-14 h-14 bg-brand-crimson text-white rounded-2xl flex items-center justify-center shrink-0">
+                                <i data-lucide="factory" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Industry Internship Cell</h4>
+                                <p class="text-sm text-brand-navy/50">Mandatory industrial training partnerships with leading firms like TCS, Infosys, and core engineering giants.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    <div class="relative rounded-[40px] overflow-hidden shadow-2xl rotate-2">
+                        <img src="image11" class="w-full object-cover" alt="MITS Academic Block">
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" class="py-32 bg-brand-navy text-white overflow-hidden reveal">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24">
+                <span class="text-brand-gold font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Academic Departments</span>
+                <h2 class="text-5xl font-serif font-bold mb-8">Engineering & Science</h2>
+                <div class="h-1 w-24 bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dept 1 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-brand-gold/5 rounded-full group-hover:scale-150 transition-transform"></div>
+                    <i data-lucide="code" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Computer Science & IT</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">Pioneering in Software Engineering, AI/ML research, and cybersecurity systems.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        Explore Faculty <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Dept 2 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <i data-lucide="zap" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Electrical Engineering</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">Focusing on Power Systems, Renewable Energy, and Smart Grid technologies.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        Explore Labs <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Dept 3 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <i data-lucide="settings" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Mechanical Engineering</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">Advanced research in Robotics, Thermal Engineering, and Automobile design.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        View Workshops <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Dept 4 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <i data-lucide="building" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Civil Engineering</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">Sustainable infrastructure development and Structural Engineering excellence.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        Department Info <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Dept 5 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <i data-lucide="compass" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Architecture</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">Fostering creativity through Sustainable Urbanism and Human-Centric Design.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        Studio Tours <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Dept 6 -->
+                <div class="dept-card bg-brand-slate p-12 rounded-[40px] border border-white/5 relative group cursor-pointer overflow-hidden">
+                    <i data-lucide="flask-conical" class="w-12 h-12 text-brand-gold mb-8"></i>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Applied Sciences</h3>
+                    <p class="text-white/50 text-sm mb-8 leading-relaxed">The foundational block covering Physics, Chemistry, and Mathematics research.</p>
+                    <div class="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-gold group-hover:translate-x-2 transition-transform">
+                        Research Areas <i data-lucide="arrow-right" class="ml-2 w-3 h-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-cream border-t border-brand-navy/5 pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-3">
+                        <img src="./logo.png" alt="MITS Logo" class="w-10 h-10" onerror="this.src='image_logo_fallback'">
+                        <div class="flex flex-col">
+                            <span class="text-xl font-bold tracking-tighter text-brand-navy leading-none">MITS</span>
+                            <span class="text-[9px] font-black tracking-[0.3em] text-brand-gold uppercase">Gwalior</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-brand-navy/50 leading-relaxed">
+                        Madhav Institute of Technology and Science, Gwalior (M.P.), India - 474005. <br/>
+                        Established in 1957.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-brand-navy mb-8 uppercase tracking-widest text-[10px]">Governance</h5>
+                    <ul class="space-y-4 text-sm font-medium text-brand-navy/60">
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Director's Office</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Board of Governors</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Public Safety</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-brand-navy mb-8 uppercase tracking-widest text-[10px]">Resources</h5>
+                    <ul class="space-y-4 text-sm font-medium text-brand-navy/60">
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Central Library</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Campus Maps</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">IT Help Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-[32px] shadow-sm border border-brand-navy/5 text-center">
+                    <p class="text-[9px] font-black uppercase tracking-[0.2em] text-brand-gold mb-2">Admissions</p>
+                    <button class="w-full bg-brand-navy text-white py-3.5 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold transition-all">
+                        Connect with Admissions
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-brand-navy/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] font-black uppercase tracking-[0.3em] text-brand-navy/40 text-center">
+                <p>© 2024 Madhav Institute of Technology and Science. All rights reserved.</p>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-brand-navy transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-brand-navy transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navbar Interaction
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('mt-8');
+                navbar.querySelector('.bg-white\\/90').classList.add('rounded-none', 'py-3', 'shadow-2xl');
+            } else {
+                navbar.classList.add('mt-8');
+                navbar.querySelector('.bg-white\\/90').classList.remove('rounded-none', 'py-3', 'shadow-2xl');
+            }
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

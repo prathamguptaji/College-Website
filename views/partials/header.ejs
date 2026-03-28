@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Madhav Institute of Technology and Science (MITS) | Gwalior' %></title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0A192F',
+                            slate: '#112240',
+                            gold: '#C5A059',
+                            'gold-light': '#D4AF37',
+                            cream: '#F8F5F0',
+                            crimson: '#B22222',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link-ltr {
+            position: relative;
+        }
+        .nav-link-ltr::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #C5A059;
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+        .nav-link-ltr:hover::after {
+            width: 100%;
+            left: 0;
+            background: #C5A059;
+        }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .dropdown-animate {
+            transform-origin: top;
+            animation: dropdownFade 0.2s ease-out forwards;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: scaleY(0.95); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        .scrolled-nav {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            margin-top: 0 !important;
+            border-radius: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-navy bg-white selection:bg-brand-gold/30 overflow-x-hidden">
+
+<!-- Top Utility Bar -->
+<div class="bg-brand-navy text-white py-2 px-6 hidden md:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-semibold uppercase tracking-wider">
+        <div class="flex items-center space-x-6">
+            <span class="flex items-center"><i data-lucide="award" class="w-3.5 h-3.5 mr-2 text-brand-gold"></i> NAAC A++ Accredited</span>
+            <span class="flex items-center"><i data-lucide="phone" class="w-3.5 h-3.5 mr-2 text-brand-gold"></i> Admissions: +91 751 2409300</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="#" class="hover:text-brand-gold transition-colors">Tenders</a>
+            <a href="#" class="hover:text-brand-gold transition-colors">NIRF</a>
+            <a href="#" class="hover:text-brand-gold transition-colors">Contact</a>
+            <div class="flex items-center space-x-3 ml-4 border-l border-white/20 pl-4">
+                <a href="#" class="hover:text-brand-gold"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="hover:text-brand-gold"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="hover:text-brand-gold"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Navigation -->
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 md:mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <nav id="navbar-container" class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 px-6 py-3 transition-all duration-500 flex justify-between items-center">
+            
+            <!-- Logo Section -->
+            <a href="/" class="flex items-center space-x-4 group">
+                <div class="relative">
+                    <img src="./logo.png" alt="MITS Logo" class="w-12 h-12 transition-transform duration-500 group-hover:rotate-[360deg]" onerror="this.src='https://mitsgwalior.in/images/logo.png'">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-extrabold tracking-tighter text-brand-navy leading-none">MITS <span class="text-brand-gold">GWALIOR</span></span>
+                    <span class="text-[9px] font-bold tracking-[0.25em] text-brand-navy/60 uppercase hidden sm:block">Estd. 1957 • Autonomous Institute</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-1">
+                <!-- Simple Links -->
+                <a href="#home" class="nav-link-ltr px-4 py-2 text-sm font-bold text-brand-navy/80 hover:text-brand-navy transition-colors">Home</a>
+                
+                <!-- Dropdown: Institute -->
+                <div class="relative group">
+                    <button class="flex items-center space-x-1 px-4 py-2 text-sm font-bold text-brand-navy/80 hover:text-brand-navy transition-colors">
+                        <span>The Institute</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <div class="bg-white rounded-xl shadow-xl border border-brand-navy/5 overflow-hidden py-2">
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">About MITS</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Vision & Mission</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Administration</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Governing Body</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Academics -->
+                <div class="relative group">
+                    <button class="flex items-center space-x-1 px-4 py-2 text-sm font-bold text-brand-navy/80 hover:text-brand-navy transition-colors">
+                        <span>Academics</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <div class="bg-white rounded-xl shadow-xl border border-brand-navy/5 overflow-hidden py-2">
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Departments</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Curriculum/Syllabus</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Academic Calendar</a>
+                            <a href="#" class="block px-5 py-2.5 text-sm text-brand-navy/70 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors font-medium">Library (E-Resources)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#research" class="nav-link-ltr px-4 py-2 text-sm font-bold text-brand-navy/80 hover:text-brand-navy transition-colors">Research</a>
+                
+                <div class="w-px h-6 bg-brand-navy/10 mx-2"></div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-3 ml-2">
+                    <button class="p-2 hover:bg-brand-navy/5 rounded-full transition-colors group">
+                        <i data-lucide="search" class="w-5 h-5 text-brand-navy/70 group-hover:text-brand-navy"></i>
+                    </button>
+                    <a href="#apply" class="bg-brand-navy text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-gold hover:shadow-lg hover:shadow-brand-gold/20 transition-all active:scale-95">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggles -->
+            <div class="lg:hidden flex items-center space-x-4">
+                <button class="p-2 text-brand-navy">
+                    <i data-lucide="search" class="w-6 h-6"></i>
+                </button>
+                <button id="menu-toggle" class="p-2 text-brand-navy hover:bg-brand-navy/5 rounded-lg transition-colors">
+                    <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Enhanced Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-brand-navy/95 backdrop-blur-xl p-8 flex flex-col text-white transition-all duration-500">
+        <div class="flex justify-between items-center mb-12">
+            <span class="text-2xl font-bold tracking-tighter">MITS <span class="text-brand-gold">GWALIOR</span></span>
+            <button id="menu-close" class="p-2 bg-white/10 rounded-full">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+        </div>
+        
+        <div class="flex flex-col space-y-8 overflow-y-auto">
+            <a href="#" class="text-3xl font-extrabold hover:text-brand-gold transition-colors">Home</a>
+            <div>
+                <button class="flex items-center justify-between w-full text-3xl font-extrabold hover:text-brand-gold transition-colors text-left" onclick="toggleMobileSub(this)">
+                    <span>The Institute</span>
+                    <i data-lucide="chevron-down" class="w-6 h-6"></i>
+                </button>
+                <div class="hidden flex flex-col pl-4 mt-4 space-y-4 border-l border-white/20">
+                    <a href="#" class="text-lg text-white/70">About Us</a>
+                    <a href="#" class="text-lg text-white/70">Governance</a>
+                    <a href="#" class="text-lg text-white/70">History</a>
+                </div>
+            </div>
+            <a href="#" class="text-3xl font-extrabold hover:text-brand-gold transition-colors">Academics</a>
+            <a href="#" class="text-3xl font-extrabold hover:text-brand-gold transition-colors">Research</a>
+            <a href="#" class="text-3xl font-extrabold hover:text-brand-gold transition-colors">Campus Life</a>
+        </div>
+
+        <div class="mt-auto pt-8 border-t border-white/10 flex flex-col space-y-4">
+            <button class="w-full bg-brand-gold text-brand-navy py-4 rounded-2xl font-bold text-lg">Apply Online</button>
+            <div class="flex justify-center space-x-8 text-white/60">
+                <a href="#"><i data-lucide="facebook"></i></a>
+                <a href="#"><i data-lucide="twitter"></i></a>
+                <a href="#"><i data-lucide="linkedin"></i></a>
+                <a href="#"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    const header = document.getElementById('main-header');
+    const navContainer = document.getElementById('navbar-container');
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Scroll Handler
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled-nav');
+            header.classList.remove('md:mt-10');
+            navContainer.classList.remove('rounded-2xl', 'max-w-7xl', 'mx-auto');
+            navContainer.classList.add('rounded-none', 'shadow-lg');
+            navContainer.style.maxWidth = '100%';
+        } else {
+            header.classList.remove('scrolled-nav');
+            header.classList.add('md:mt-10');
+            navContainer.classList.add('rounded-2xl');
+            navContainer.classList.remove('rounded-none', 'shadow-lg');
+        }
+    });
+
+    // Mobile Menu Toggle
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+
+    menuClose.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Simple helper for mobile submenus
+    function toggleMobileSub(btn) {
+        const submenu = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        submenu.classList.toggle('hidden');
+        icon.style.transform = submenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+</script>
+
+<!-- Spacer to prevent content from hiding under fixed header -->
+<div class="h-19 md:h-30"></div>
